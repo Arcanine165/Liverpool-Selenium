@@ -13,6 +13,8 @@ public class SearchPage extends BaseTest {
     private WebElement searchList;
     @FindBy(xpath = "//h5[contains(@class,'card-title a-card-description')]")
     private List<WebElement> desiredProducts;
+    @FindBy(className = "o-content__noResultsNullSearch")
+    private WebElement notFoundContainer;
 
     private String productName;
 
@@ -28,6 +30,10 @@ public class SearchPage extends BaseTest {
 
         return new ProductPage();
 
+    }
+
+    public Boolean notFoundIsVisible(){
+        return notFoundContainer.isDisplayed();
     }
 
 }

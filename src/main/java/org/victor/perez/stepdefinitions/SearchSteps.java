@@ -19,14 +19,7 @@ public class SearchSteps {
     private SearchPage search;
     private ProductPage productPage;
     private CartPage cartPage;
-    @Before
-    public void initBrowser() {
-        BaseTest.initBrowser();
-    }
-    @After
-    public void finish(){
-        BaseTest.closeBrowser();
-    }
+
     @Given("User is in home")
     public void userIsInLiverpoolHomePage(){
         home = new HomePage();
@@ -77,13 +70,18 @@ public class SearchSteps {
         Assert.assertTrue(cartPage.validateIfProductIsOnCart());
     }
 
-    @Then("Error appears if user don't select size")
-    public void errorAppearsIfUserDontSelectSize() {
-        Assert.assertTrue(productPage.errorAlertVisible());
-    }
-
     @And("Alert of success appear")
     public void alertOfSuccessAppear() {
         Assert.assertTrue(productPage.successAlertVisible());
+    }
+
+    @Then("The page displays a landing page error")
+    public void thePageDisplaysALandingPageError() {
+        Assert.assertTrue(search.notFoundIsVisible());
+    }
+
+    @Then("Error appears if user doesn't select size")
+    public void errorAppearsIfUserDoesnTSelectSize() {
+        Assert.assertTrue(productPage.errorAlertVisible());
     }
 }

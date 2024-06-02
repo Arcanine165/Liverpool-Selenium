@@ -1,5 +1,6 @@
 package org.victor.perez.utils;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.victor.perez.base.BaseTest;
@@ -13,7 +14,10 @@ public class Hooks {
         BaseTest.initBrowser();
         String scenarioName = scenario.getName();
         setCurrentScenarioName(scenarioName);
-        System.out.println("Starting scenario: " + scenarioName);
+    }
+    @After
+    public void closeBrowser(){
+        BaseTest.closeBrowser();
     }
 
     public static String getCurrentScenarioName() {

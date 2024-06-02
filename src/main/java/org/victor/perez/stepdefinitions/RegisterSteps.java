@@ -16,20 +16,6 @@ public class RegisterSteps {
     private LoginPage login;
     private RegisterPage register;
 
-    @Before
-    public void beforeScenario(Scenario scenario) {
-        // This code will run before each scenario
-        BaseTest.initBrowser();
-        String scenarioName = scenario.getName();
-        System.out.println("Starting scenario: " + scenarioName);
-
-    }
-    @After
-    public void finish(){
-        BaseTest.closeBrowser();
-    }
-
-
     @Given("User is in Liverpool")
     public void userIsInLiverpool() {
         home = new HomePage();
